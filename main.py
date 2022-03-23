@@ -32,10 +32,10 @@ def dolar_scraping():
 def report():
     datos = dolar_scraping()
     dolar_price = f'''El precio del dolar con fecha {datos[0][1]}; se cotiza en {datos[0][5]} pesos mexicanos\nDatos del Diario Oficial de la Federación\nFuente: www.banxico.org.mx'''
-    bot_send_text(dolar_price)
+    return bot_send_text(dolar_price)
     
 if __name__ == '__main__':
-    schedule.every().day.at("17:24").do(report)
+    schedule.every().day.at("17:28").do(report)
 
     while True:
         schedule.run_pending()
