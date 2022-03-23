@@ -1,7 +1,6 @@
 from bs4 import BeautifulSoup  #del módulo bs4, necesitamos BeautifulSoup
 import requests
 import schedule
-from servidor import keep_alive
 import os
 
 def bot_send_text(bot_message):
@@ -36,8 +35,7 @@ def report():
     bot_send_text(dolar_price)
     
 if __name__ == '__main__':
-    keep_alive()
-    schedule.every().day.at("17:15").do(report)
+    schedule.every().day.at("17:18").do(report)
 
     while True:
         schedule.run_pending()
