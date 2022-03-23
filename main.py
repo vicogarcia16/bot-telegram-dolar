@@ -2,17 +2,7 @@ from bs4 import BeautifulSoup  #del módulo bs4, necesitamos BeautifulSoup
 import requests
 import schedule
 import os
-
-def bot_send_text(bot_message):
-    
-    bot_token = os.getenv('TOKEN')
-    bot_chatID = '696614849'
-    send_text = 'https://api.telegram.org/bot' + bot_token + '/sendMessage?chat_id=' + bot_chatID + '&parse_mode=Markdown&text=' + bot_message
-
-    response = requests.get(send_text)
-
-    return response
-
+import telebot
 def dolar_scraping():
     lista = []
     url = requests.get('https://www.banxico.org.mx/tipcamb/tipCamMIAction.do?idioma=sp')
@@ -29,13 +19,12 @@ def dolar_scraping():
 
     return lista
 
-def report():
+bot = telebot.TeleBot('5147941454:AAGqocRiGRjAcGo70U2HcLLx8xXEcWvgdEg')
+@bot.message_handler(commands=["help","start"])
+def report(message):
     datos = dolar_scraping()
     dolar_price = f'''El precio del dolar con fecha {datos[0][1]}; se cotiza en {datos[0][5]} pesos mexicanos\nDatos del Diario Oficial de la Federación\nFuente: www.banxico.org.mx'''
-    return bot_send_text(dolar_price)
+    bot.reply_to(message, dolar_price)
     
-if __name__ == '__main__':
-    schedule.every().day.at("17:28").do(report)
-
-    while True:
-        schedule.run_pending()
+bot.polling()
+    
