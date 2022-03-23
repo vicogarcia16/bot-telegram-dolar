@@ -2,10 +2,11 @@ from bs4 import BeautifulSoup  #del módulo bs4, necesitamos BeautifulSoup
 import requests
 import schedule
 from servidor import keep_alive
+import os
 
 def bot_send_text(bot_message):
     
-    bot_token = '5147941454:AAGqocRiGRjAcGo70U2HcLLx8xXEcWvgdEg'
+    bot_token = os.getenv('TOKEN')
     bot_chatID = '696614849'
     send_text = 'https://api.telegram.org/bot' + bot_token + '/sendMessage?chat_id=' + bot_chatID + '&parse_mode=Markdown&text=' + bot_message
 
