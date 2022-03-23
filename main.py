@@ -35,7 +35,7 @@ def report():
     bot_send_text(dolar_price)
     
 if __name__ == '__main__':
-    schedule.every().day.at("17:18").do(report)
+    schedule.every().day.at("17:24").do(report)
 
     while True:
         schedule.run_pending()
