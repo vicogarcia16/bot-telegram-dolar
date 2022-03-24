@@ -31,10 +31,8 @@ def report(message):
 def bienvenida(message):
     mensaje = {
     'welcome':
-        u'Bienvenido!\n'
-        u'¿Cuál carrera de tech estás haciendo y de dónde vienes? 😁🙌🏻\n\n'
-        u'Puedes consultar el precio del dolar en pesos mexicanos con los comandos:\n' 
-        u' /start ó /help\n\n'
+        u'Bienvenido a nuestro Bot!\n'
+        u'Puedes consultar el precio del dolar en pesos mexicanos con los comandos: /start ó /help\n\n'
     
     }
     bot.reply_to(message, mensaje['welcome'])
