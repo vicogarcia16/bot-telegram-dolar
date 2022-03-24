@@ -19,7 +19,7 @@ def dolar_scraping():
 
     return lista
 
-token = os.getenviron("TOKEN")
+token = os.environ.get("TOKEN")
 bot = telebot.TeleBot(token)
 @bot.message_handler(commands=["help","start"])
 def report(message):
